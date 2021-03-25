@@ -1,13 +1,6 @@
 import math
 import socket
-import random
-import time
-import cv2
 import numpy as np
-import time
-import traceback
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 
 MAZE_SIZE = 250
 
@@ -82,6 +75,7 @@ def get_possible_steps():
         zeros.append("d")
     return ones, zeros
 
+
 def get_location_after_step(step, x, y):
     if step == 'l':
         x = int(x) - 1
@@ -92,6 +86,7 @@ def get_location_after_step(step, x, y):
     elif step == 'd':
         y = int(y) - 1
     return x, y
+
 
 # send a step to go
 def do_choice(step):
@@ -140,6 +135,7 @@ def take_a_step():
         del steps[-1]
         print("len steps: " + str(len(steps)))
 
+
 # get the i from the server
 def get_information():
     s.send("i".encode())
@@ -178,6 +174,7 @@ def find_common_points(options_list):
                 common_points.remove(point)
     return common_points
 
+
 # send the solution
 def get_s(solution):
     s.send("s".encode())
@@ -199,7 +196,6 @@ def get_s(solution):
     print(server_ans3)
 
     return server_ans
-
 
 
 if __name__ == "__main__":
